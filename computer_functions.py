@@ -1,6 +1,6 @@
 import re
 
-highest_degree = 2
+DEGREE_MAX = 2
 
 def strip_space(string):
     return string.replace(" ", "")
@@ -16,14 +16,14 @@ def highest_degree(equation):
 
     return max_degree
 
-def get_degree(term):
+def get_degree(term) -> int:
     return int(term[term.index("^") + 1:])
 
 #larger than 10
 #larger than 2
 def valid_degrees(terms):
     for term in terms:
-        if (0 <= get_degree(term) <= highest_degree):
+        if not (0 <= get_degree(term) <= DEGREE_MAX):
             return False
 
     return True
