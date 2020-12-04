@@ -13,4 +13,6 @@ if len(sys.argv) != 2:
 
 # print(cf.valid_degrees(ex))
 
-print(cf.rhs_to_lhs(ex))
+#print(cf.rhs_to_lhs(ex))
+
+print(cf.get_degree(cf.rhs_to_lhs(ex)[0]))
