@@ -5,14 +5,11 @@ DEGREE_MAX = 2
 def strip_space(string):
     return string.replace(" ", "")
 
-def highest_degree(equation):
+def highest_degree(terms):
     max_degree = 0
 
-    for i in range(0, len(equation)):
-        if equation[i] == '^':
-            degree = int(equation[i + 1])
-            if degree > max_degree:
-                max_degree = degree
+    for term in terms:
+        max_degree = max(get_degree(term), max_degree)
 
     return max_degree
 
@@ -25,7 +22,7 @@ def valid_degrees(terms):
     for term in terms:
         if not (0 <= get_degree(term) <= DEGREE_MAX):
             return False
-
+ 
     return True
 
 #add in *X^0 to constants for easier calculation later
