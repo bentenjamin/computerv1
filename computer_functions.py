@@ -55,9 +55,9 @@ def rhs_to_lhs(equation):
     lhs_terms = re.findall("([+-]?[^-+]+)", split[0])
     rhs_terms = re.findall("([+-]?[^-+]+)", split[1])
 
-    lhs_terms = list(map(remove_pos, lhs_terms))
-    rhs_terms = list(map(remove_pos, rhs_terms))
+    lhs_terms = [remove_pos(term) for term in lhs_terms]
+    rhs_terms = [remove_pos(term) for term in rhs_terms]
 
-    rhs_terms = list(map(invert_sign, rhs_terms))
+    rhs_terms = [invert_sign(term) for term in rhs_terms]
 
     return lhs_terms + rhs_terms

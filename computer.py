@@ -15,6 +15,6 @@ terms = cf.rhs_to_lhs(ex)
 
 # print(cf.valid_degrees(ex))
 
-#print(cf.rhs_to_lhs(ex))
+print(cf.rhs_to_lhs(ex))
 
-print(cf.valid_degrees(terms))
+#print(cf.valid_degrees(terms))
