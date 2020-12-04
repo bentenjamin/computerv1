@@ -8,9 +8,11 @@ ex = cf.strip_space(quadratic_example)
 if len(sys.argv) != 2:
     raise Exception("Invalid number of arguements")
 
-terms = cf.rhs_to_lhs(ex)
+#terms = cf.rhs_to_lhs(ex)
 
-added_terms = cf.add_terms(terms)
+reduced = cf.reduce_equation(ex)
+
+# = cf.add_terms(terms)
 
 # print("equation:", sys.argv[1])
 
@@ -28,4 +30,6 @@ added_terms = cf.add_terms(terms)
 
 #print(cf.solve_linear(added_terms[1], added_terms[0]))
 
-print(cf.reduced_form_tostring(cf.reduce_equation(ex)))
+#print(cf.reduced_form_tostring(cf.reduce_equation(ex)))
+
+print(cf.solve_quadratic(reduced[2], reduced[1], reduced[0]))

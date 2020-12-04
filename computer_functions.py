@@ -71,9 +71,13 @@ def rhs_to_lhs(equation):
 def solve_linear(a, b):
     return (-1 * (b / a))
 
+#i is 1 or -1 to give the 2 different roots
+def quadratic_roots(a, b, c, i):
+    return ((-1 * b) + (i * (sqrt((b**2) + (-4 * a * c))))) / (2 * a)
+
 #quadratic equation where ax^2 + bx + c = 0
 def solve_quadratic(a, b, c):
-    pass
+    return (quadratic_roots(a, b, c, 1), quadratic_roots(a, b, c, -1))
 
 def reduced_form_tostring(coeffecients):
     reduced = ""
@@ -86,3 +90,6 @@ def reduced_form_tostring(coeffecients):
 
 def reduce_equation(equation):
     return add_terms(rhs_to_lhs(equation))
+
+def sqrt(num):
+    return num**0.5
