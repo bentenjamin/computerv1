@@ -10,7 +10,7 @@ if len(sys.argv) != 2:
 
 #terms = cf.rhs_to_lhs(ex)
 
-reduced = cf.reduce_equation(ex)
+#reduced = cf.reduce_equation(ex)
 
 # = cf.add_terms(terms)
 
@@ -32,4 +32,36 @@ reduced = cf.reduce_equation(ex)
 
 #print(cf.reduced_form_tostring(cf.reduce_equation(ex)))
 
-print(cf.solve_quadratic(reduced[2], reduced[1], reduced[0]))
+#print(cf.solve_quadratic(reduced[2], reduced[1], reduced[0]))
+
+#print(reduced)
+
+def calc(equation):
+    coeffs = init_equation(equation)
+
+    print("Reduced Form:", cf.reduced_form_tostring(coeffs))
+    print("Polynomial Degree:", len(coeffs) - 1)
+
+    if (len(coeffs) - 1 > 2):
+        print("degree is too damn high")
+        return
+    
+    if (len(coeffs) - 1 == 2):
+        print("solutions are:", cf.solve_quadratic(coeffs[2], coeffs[1], coeffs[0]))
+        return
+    
+    if (len(coeffs) - 1 == 1):
+        print("solutions are:", cf.solve_linear(coeffs[1], coeffs[0]))
+        return
+    
+    if (len(coeffs) == 1 and not coeffs[0] == 0):
+        print("invalid equation")
+
+def init_equation(equation):
+    equation = cf.strip_space(equation)
+    terms = cf.rhs_to_lhs(equation)
+    terms = cf.constant_indeterminate_inserter(terms)
+    coeffs = cf.add_terms(terms)
+    return coeffs
+
+calc(sys.argv[1])

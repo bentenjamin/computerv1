@@ -36,7 +36,7 @@ def constant_indeterminate_inserter(terms):
     return terms
 
 def get_coefficient(term):
-    return float(term[:term.index("X") - 1])
+    return float(term[:term.index("X") - 1]) if not (term[0] == "X") else float(1)
     #float(re.search("[+-]?\d*[\.]?\d*(?:(?:[eE])[+-]?\d+)?", term).group())
 
 #returns a list containing the addition of coeffecients of same indeterminates where the index is the degree
