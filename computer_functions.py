@@ -37,9 +37,9 @@ def get_coefficient(term):
     return float(term[:term.index("X") - 1])
     #float(re.search("[+-]?\d*[\.]?\d*(?:(?:[eE])[+-]?\d+)?", term).group())
 
-#returns a list containing the adition of coeffecients of indeterminates where the index is the degree
+#returns a list containing the addition of coeffecients of same indeterminates where the index is the degree
 def add_indeterminates(terms):
-    coefficients = [0] * (DEGREE_MAX + 1)
+    coefficients = [0] * (highest_degree(terms) + 1)
 
     for term in terms:
         coefficients[get_degree(term)] += get_coefficient(term)
