@@ -7,8 +7,10 @@ ex = cf.strip_space(example)
 if len(sys.argv) != 2:
     raise Exception("Invalid number of arguements")
 
-print("equation:", sys.argv[1])
+# print("equation:", sys.argv[1])
 
-print(cf.highest_degree(ex))
+# print(cf.highest_degree(ex))
 
-print(cf.valid_degrees(ex))
+# print(cf.valid_degrees(ex))
+
+print(cf.rhs_to_lhs(ex))
