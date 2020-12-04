@@ -26,16 +26,12 @@ def valid_degrees(terms):
     return True
 
 #add in *X^0 to constants for easier calculation later
-def constant_indeterminate_inserter(equation):
-    i = 0
+def constant_indeterminate_inserter(terms):
+    for i in range(len(terms)):
+        if (terms[i].find("*X^") == -1):
+            terms[i] = terms[i] + "*X^0"
 
-    while i <= len(equation):
-        if equation[i].isdigit() and i != len(equation) and not equation[i + 1].isdigit() :
-            equation = equation[:i] + "*X^0" + equation[i:]
-            i += 4
-        i += 1
-    
-    return equation
+    return terms
 
 #returns a list containing the adition of coeffecients of indeterminates where the index is the degree
 def list_added_indeterminates(equation):
