@@ -38,7 +38,7 @@ def get_coefficient(term):
     #float(re.search("[+-]?\d*[\.]?\d*(?:(?:[eE])[+-]?\d+)?", term).group())
 
 #returns a list containing the addition of coeffecients of same indeterminates where the index is the degree
-def add_indeterminates(terms):
+def add_terms(terms):
     coefficients = [0] * (highest_degree(terms) + 1)
 
     for term in terms:
@@ -64,3 +64,7 @@ def rhs_to_lhs(equation):
     rhs_terms = [invert_sign(term) for term in rhs_terms]
 
     return lhs_terms + rhs_terms
+
+#where ax + b = 0
+def solve_linear_equation(a, b):
+    return (-1 * (b / a))
