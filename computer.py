@@ -3,7 +3,7 @@ import computer_functions as cf
 
 quadratic_example = "5 * X^0 + 4 * X^1 - 9.3 * X^2 = 1 * X^0"
 linear_example =  "5 * X^0 + 4 * X^1 = 4 * X^0"
-ex = cf.strip_space(linear_example)
+ex = cf.strip_space(quadratic_example)
 
 if len(sys.argv) != 2:
     raise Exception("Invalid number of arguements")
@@ -26,4 +26,6 @@ added_terms = cf.add_terms(terms)
 
 #print(cf.add_indeterminates(terms))
 
-print(cf.solve_linear_equation(added_terms[1], added_terms[0]))
+#print(cf.solve_linear(added_terms[1], added_terms[0]))
+
+print(cf.reduced_form_tostring(cf.reduce_equation(ex)))

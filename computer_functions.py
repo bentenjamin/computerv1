@@ -2,8 +2,10 @@ import re
 
 DEGREE_MAX = 2
 
-def strip_space(string):
-    return string.replace(" ", "")
+#all functions assume reduced form q = 0 (besides reduce_equation)
+
+def strip_space(reduced):
+    return reduced.replace(" ", "")
 
 def highest_degree(terms):
     max_degree = 0
@@ -65,6 +67,22 @@ def rhs_to_lhs(equation):
 
     return lhs_terms + rhs_terms
 
-#where ax + b = 0
-def solve_linear_equation(a, b):
+#linear equation where ax + b = 0
+def solve_linear(a, b):
     return (-1 * (b / a))
+
+#quadratic equation where ax^2 + bx + c = 0
+def solve_quadratic(a, b, c):
+    pass
+
+def reduced_form_tostring(coeffecients):
+    reduced = ""
+
+    for i in range(len(coeffecients) -1, 0, -1):
+        reduced += f'{coeffecients[i]:g}' + " * X ^ " + str(i) + " + "
+    reduced += f'{coeffecients[0]:g}' + " = 0"
+
+    return reduced
+
+def reduce_equation(equation):
+    return add_terms(rhs_to_lhs(equation))
