@@ -34,10 +34,13 @@ def constant_indeterminate_inserter(terms):
     return terms
 
 #returns a list containing the adition of coeffecients of indeterminates where the index is the degree
-def list_added_indeterminates(equation):
-    sign = 1
-    l_or_r_of_equ = 1
-    coefficients = []
+def add_indeterminates(terms):
+    coefficients = [0] * (DEGREE_MAX + 1)
+
+    for term in terms:
+        coefficients[get_degree(term)] += float(re.search("[+-]?\d*[\.]?\d*(?:(?:[eE])[+-]?\d+)?", term).group())
+    
+    return coefficients
 
 def invert_sign(term):
     return term[1:] if '-' in term else "-" + term

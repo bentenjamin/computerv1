@@ -20,3 +20,5 @@ terms = cf.rhs_to_lhs(ex)
 #print(cf.valid_degrees(terms))
 
 #print(cf.constant_indeterminate_inserter(terms))
+
+print(cf.add_indeterminates(terms))
