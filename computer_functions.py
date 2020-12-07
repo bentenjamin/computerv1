@@ -73,7 +73,7 @@ def solve_linear(a, b):
 
 #i is 1 or -1 to give the 2 different roots
 def quadratic_roots(a, b, c, i):
-    return ((-1 * b) + (i * (sqrt((b**2) + (-4 * a * c))))) / (2 * a)
+    return ((-1 * b) + (i * (sqrt(calc_discriminant(a, b, c))))) / (2 * a)
 
 #quadratic equation where ax^2 + bx + c = 0
 def solve_quadratic(a, b, c):
@@ -93,3 +93,6 @@ def reduce_equation(equation):
 
 def sqrt(num):
     return num**0.5
+
+def calc_discriminant(a, b, c):
+    return ((b**2) + ((-4) * a * c))

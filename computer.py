@@ -36,6 +36,18 @@ if len(sys.argv) != 2:
 
 #print(reduced)
 
+def quadratic(a, b, c):
+    discriminant = cf.calc_discriminant(a, b, c)
+    if (discriminant > 0):
+        print("discriminant is positive")
+        print("solutions are:", cf.solve_quadratic(a, b, c))
+    elif (discriminant < 0):
+        print("discriminant is negative")
+        print("solution is imaginary")
+    else:
+        print("discriminant is zero")
+        print("solution is:", cf.quadratic_roots(a, b, c, 1))
+
 def calc(equation):
     coeffs = init_equation(equation)
 
@@ -47,7 +59,7 @@ def calc(equation):
         return
     
     if (len(coeffs) - 1 == 2):
-        print("solutions are:", cf.solve_quadratic(coeffs[2], coeffs[1], coeffs[0]))
+        quadratic(coeffs[2], coeffs[1], coeffs[0])
         return
     
     if (len(coeffs) - 1 == 1):
@@ -65,3 +77,4 @@ def init_equation(equation):
     return coeffs
 
 calc(sys.argv[1])
+
