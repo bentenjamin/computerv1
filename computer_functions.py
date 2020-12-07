@@ -82,9 +82,9 @@ def solve_quadratic(a, b, c):
 def reduced_form_tostring(coeffecients):
     reduced = ""
 
-    for i in range(len(coeffecients) -1, 0, -1):
+    for i in range(len(coeffecients) -1, 1, -1):
         reduced += f'{coeffecients[i]:g}' + " * X ^ " + str(i) + " + "
-    reduced += f'{coeffecients[0]:g}' + " = 0"
+    reduced += f'{coeffecients[1]:g} * X + {coeffecients[0]:g}' + " = 0"
 
     return reduced
 
