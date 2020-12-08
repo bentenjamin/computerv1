@@ -1,6 +1,21 @@
 import sys
 import computer_functions as cf
 
+def main():
+    if len(sys.argv) != 2:
+        print("invalid number of arguements")
+        return False
+
+    exec(sys.argv[1])
+
+def exec(input):
+    if validate_input(input):
+        try:
+            calc(input)
+        except Exception as e:
+            print("there was an error")
+            print(e)
+
 def calc(equation):
     coeffs = cf.init_equation(equation)
 
@@ -27,10 +42,6 @@ def calc(equation):
         print("no solution")
 
 def validate_input(input):
-    if len(sys.argv) != 2:
-        print("invalid number of arguements")
-        return False
-    
     for char in input:
         if not ((char.isdigit()) or (char in "+-*/ =.^xX")):
             print("invalid character in input")
@@ -38,12 +49,5 @@ def validate_input(input):
     
     return True
 
-def run(input):
-    if validate_input(input):
-        try:
-            calc(input)
-        except Exception as e:
-            print("there was an error")
-            print(e)
-        
-run(sys.argv[1])
+if __name__ == '__main__':
+    main()
