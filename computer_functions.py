@@ -59,7 +59,7 @@ def normalise(terms):
 def get_coefficient(term):
     coeff = term[:term.index("*")]
 
-    if (coeff.find("/")):
+    if not (coeff.find("/") == -1):
         fraction = coeff.split("/")
         return (float(fraction[0]) / float(fraction[1]))
 
@@ -123,7 +123,11 @@ def reduced_form_tostring(coeffecients):
 
     for i in range(len(coeffecients) - 1, 1, -1):
         reduced += f'{coeffecients[i]:g}' + " * X ^ " + str(i) + " + "
-    reduced += f'{coeffecients[1]:g} * X + {coeffecients[0]:g}' + " = 0"
+    
+    if (len(coeffecients) >= 2):
+        reduced += f'{coeffecients[1]:g} * X + '
+    
+    reduced += f'{coeffecients[0]:g}' + " = 0"
 
     return reduced
 

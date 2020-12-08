@@ -8,6 +8,9 @@ ex = cf.strip_space(quadratic_example)
 if len(sys.argv) != 2:
     raise Exception("Invalid number of arguements")
 
+def left_equals_right(coeffs):
+    return not sum(coeffs)
+
 def quadratic(a, b, c):
     discriminant = cf.calc_discriminant(a, b, c)
     if (discriminant > 0):
@@ -26,6 +29,10 @@ def calc(equation):
     print("Reduced Form:", cf.reduced_form_tostring(coeffs))
     print("Polynomial Degree:", len(coeffs) - 1)
 
+    if left_equals_right(coeffs):
+        print("solution is all real numbers")
+        return
+
     if (len(coeffs) - 1 > 2):
         print("degree is too damn high")
         return
@@ -35,7 +42,7 @@ def calc(equation):
         return
     
     if (len(coeffs) - 1 == 1):
-        print("solutions are:", cf.solve_linear(coeffs[1], coeffs[0]))
+        print("solution is:", cf.solve_linear(coeffs[1], coeffs[0]))
         return
     
     if (len(coeffs) == 1 and not coeffs[0] == 0):
