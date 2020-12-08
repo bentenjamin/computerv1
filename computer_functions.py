@@ -86,19 +86,21 @@ def invert_sign(term):
 def remove_pos(term):
     return term.replace("+", "")
 
+def split_to_terms(equation):
+    terms = re.findall("([+-]?[^-+]+)", equation)
+    terms = [remove_pos(term) for term in terms]
+    return terms
+
 
 def rhs_to_lhs(equation):
     split = equation.split("=")
 
-    lhs_terms = re.findall("([+-]?[^-+]+)", split[0])
-    rhs_terms = re.findall("([+-]?[^-+]+)", split[1])
+    terms = split_to_terms(split[0])
 
-    lhs_terms = [remove_pos(term) for term in lhs_terms]
-    rhs_terms = [remove_pos(term) for term in rhs_terms]
+    if (len(split) == 2):
+        terms += [invert_sign(term) for term in split_to_terms(split[1])]
 
-    rhs_terms = [invert_sign(term) for term in rhs_terms]
-
-    return lhs_terms + rhs_terms
+    return terms
 
 # linear equation where ax + b = 0
 
