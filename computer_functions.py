@@ -27,16 +27,29 @@ def valid_degrees(terms):
  
     return True
 
-#add in *X^0 to constants for easier calculation later
-def constant_indeterminate_inserter(terms):
+# replace x with X
+# add X to constants
+# add coeff if missing
+# add power if missing
+def normalise(terms):
     for i in range(len(terms)):
-        if (terms[i].find("*X^") == -1):
-            terms[i] = terms[i] + "*X^0"
+        terms[i] = terms[i].replace("x", "X")
+
+        if (terms[i].find("X") == -1):
+            terms[i] += "*X^0"
+        else:
+            if (terms[i].find("^") == -1):
+                terms[i] += "^1"
+            if (terms[i][0] == "X"):
+                terms[i] = "1*" + terms[i]
+        
+        if (terms[i].find("*") == -1):
+            terms[i] = terms[i].replace("X", "*X")
 
     return terms
 
 def get_coefficient(term):
-    return float(term[:term.index("X") - 1]) if not (term[0] == "X") else float(1)
+    return float(term[:term.index("X") - 1])
     #float(re.search("[+-]?\d*[\.]?\d*(?:(?:[eE])[+-]?\d+)?", term).group())
 
 #returns a list containing the addition of coeffecients of same indeterminates where the index is the degree
@@ -49,7 +62,7 @@ def add_terms(terms):
     return coefficients
 
 def invert_sign(term):
-    return term[1:] if '-' in term else "-" + term
+    return term[1:] if '-' in term else ("-" + term)
 
 def remove_pos(term):
     return term.replace("+", "")

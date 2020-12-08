@@ -8,34 +8,6 @@ ex = cf.strip_space(quadratic_example)
 if len(sys.argv) != 2:
     raise Exception("Invalid number of arguements")
 
-#terms = cf.rhs_to_lhs(ex)
-
-#reduced = cf.reduce_equation(ex)
-
-# = cf.add_terms(terms)
-
-# print("equation:", sys.argv[1])
-
-# print(cf.highest_degree(ex))
-
-# print(cf.valid_degrees(ex))
-
-#print(cf.rhs_to_lhs(ex))
-
-#print(cf.valid_degrees(terms))
-
-#print(cf.constant_indeterminate_inserter(terms))
-
-#print(cf.add_indeterminates(terms))
-
-#print(cf.solve_linear(added_terms[1], added_terms[0]))
-
-#print(cf.reduced_form_tostring(cf.reduce_equation(ex)))
-
-#print(cf.solve_quadratic(reduced[2], reduced[1], reduced[0]))
-
-#print(reduced)
-
 def quadratic(a, b, c):
     discriminant = cf.calc_discriminant(a, b, c)
     if (discriminant > 0):
@@ -71,10 +43,16 @@ def calc(equation):
 
 def init_equation(equation):
     equation = cf.strip_space(equation)
-    terms = cf.rhs_to_lhs(equation)
-    terms = cf.constant_indeterminate_inserter(terms)
+    terms = cf.normalise(cf.rhs_to_lhs(equation))
     coeffs = cf.add_terms(terms)
     return coeffs
 
 calc(sys.argv[1])
+
+# if x = y
+# reduced form will do + -x
+# fraction coefficients
+# x -> x^1
+# check if anything not x or num or symbol
+# try catch the entire thing
 
