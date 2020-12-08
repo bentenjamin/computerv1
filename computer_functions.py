@@ -57,14 +57,13 @@ def normalise(terms):
 
 
 def get_coefficient(term):
-    coeff = term[:term.index("X") - 1]
+    coeff = term[:term.index("*")]
 
-    if (coeff.find("/") == -1):
-        return float(coeff)
-    
-    nums = coeff.split("/")
+    if (coeff.find("/")):
+        fraction = coeff.split("/")
+        return (float(fraction[0]) / float(fraction[1]))
 
-    return (float(nums[0]) / float(nums[1]))
+    return float(coeff)
     #float(re.search("[+-]?\d*[\.]?\d*(?:(?:[eE])[+-]?\d+)?", term).group())
 
 # returns a list containing the addition of coeffecients of same indeterminates where the index is the degree
