@@ -21,9 +21,6 @@ def highest_degree(terms):
 def get_degree(term) -> int:
     return int(term[term.index("^") + 1:])
 
-# larger than 10
-# larger than 2
-
 
 def valid_degrees(terms):
     for term in terms:
@@ -36,6 +33,7 @@ def valid_degrees(terms):
 # add X to constants
 # add coeff if missing
 # add power if missing
+# insert * for implicit multiplication
 
 
 def normalise(terms):
@@ -114,16 +112,12 @@ def quadratic_roots(a, b, c, i):
 # quadratic equation where ax^2 + bx + c = 0
 
 
-def solve_quadratic(a, b, c):
-    return (quadratic_roots(a, b, c, 1), quadratic_roots(a, b, c, -1))
-
-
 def reduced_form_tostring(coeffecients):
     reduced = ""
 
     for i in range(len(coeffecients) - 1, 0, -1):
         reduced += f'{coeffecients[i]:g}' + " * X ^ " + str(i) + " + "
-    
+
     reduced += f'{coeffecients[0]:g}' + " = 0"
 
     return reduced.replace("+ -", "- ")
@@ -139,3 +133,27 @@ def sqrt(num):
 
 def calc_discriminant(a, b, c):
     return ((b**2) + ((-4) * a * c))
+
+
+def init_equation(equation):
+    equation = strip_space(equation)
+    terms = normalise(rhs_to_lhs(equation))
+    coeffs = add_terms(terms)
+    return coeffs
+
+
+def left_equals_right(coeffs):
+    return not sum(coeffs)
+
+
+def quadratic(a, b, c):
+    discriminant = calc_discriminant(a, b, c)
+    if (discriminant > 0):
+        print("discriminant is positive")
+        print("solutions are:", quadratic_roots(a, b, c, 1), quadratic_roots(a, b, c, -1))
+    elif (discriminant < 0):
+        print("discriminant is negative")
+        print("solution is imaginary")
+    else:
+        print("discriminant is zero")
+        print("solution is:", quadratic_roots(a, b, c, 1))

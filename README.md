@@ -19,3 +19,5 @@ output:
 stuff:
     degree of equation is largest exponent between all terms excluding constants
 
+quadratic_example = "5 * X^0 + 4 * X^1 - 9.3 * X^2 = 1 * X^0"
+linear_example =  "5 * X^0 + 4 * X^1 = 4 * X^0"
