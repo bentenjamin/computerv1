@@ -14,6 +14,7 @@ features:
     lexicon checking
     reduced form output
     fraction coefficients
+    multiple terms of same exponents in any order
 
 quadratic_example = "5 * X^0 + 4 * X^1 - 9.3 * X^2 = 1 * X^0"
 linear_example =  "5 * X^0 + 4 * X^1 = 4 * X^0"

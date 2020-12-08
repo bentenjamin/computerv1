@@ -42,13 +42,16 @@ def normalise(terms):
 
         if (terms[i].find("X") == -1):
             terms[i] += "*X^0"
-        else:
-            if (terms[i].find("^") == -1):
-                terms[i] += "^1"
-            if (terms[i][0] == "X"):
-                terms[i] = "1*" + terms[i]
+            continue
 
-        if (terms[i].find("*") == -1):
+        if (terms[i].find("^") == -1):
+            terms[i] += "^1"
+
+        if (terms[i][0] == "X"):
+            terms[i] = "1*" + terms[i]
+        elif (terms[i][1] == "-") and (terms[i][1] == "X"):
+            terms[i] = "-1*" + terms[i]
+        elif (terms[i].find("*") == -1):
             terms[i] = terms[i].replace("X", "*X")
 
     return terms
@@ -153,7 +156,7 @@ def quadratic(a, b, c):
         print("solutions are:", quadratic_roots(a, b, c, 1), quadratic_roots(a, b, c, -1))
     elif (discriminant < 0):
         print("discriminant is negative")
-        print("solution is imaginary")
+        print("solutions are:", quadratic_roots(a, b, c, 1), quadratic_roots(a, b, c, -1))
     else:
         print("discriminant is zero")
         print("solution is:", quadratic_roots(a, b, c, 1))

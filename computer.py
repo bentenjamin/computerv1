@@ -24,7 +24,7 @@ def calc(equation):
         return
     
     if (len(coeffs) == 1 and not coeffs[0] == 0):
-        print("invalid equation")
+        print("no solution")
 
 def validate_input(input):
     if len(sys.argv) != 2:
