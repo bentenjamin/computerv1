@@ -121,15 +121,12 @@ def solve_quadratic(a, b, c):
 def reduced_form_tostring(coeffecients):
     reduced = ""
 
-    for i in range(len(coeffecients) - 1, 1, -1):
+    for i in range(len(coeffecients) - 1, 0, -1):
         reduced += f'{coeffecients[i]:g}' + " * X ^ " + str(i) + " + "
-    
-    if (len(coeffecients) >= 2):
-        reduced += f'{coeffecients[1]:g} * X + '
     
     reduced += f'{coeffecients[0]:g}' + " = 0"
 
-    return reduced
+    return reduced.replace("+ -", "- ")
 
 
 def reduce_equation(equation):
