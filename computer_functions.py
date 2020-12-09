@@ -149,7 +149,7 @@ def init_equation(equation):
 
 
 def left_equals_right(coeffs):
-    return not sum(coeffs)
+    return all(coeff == 0 for coeff in coeffs)
 
 
 def quadratic(a, b, c):
