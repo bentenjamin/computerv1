@@ -2,7 +2,7 @@
 
 a simple polynomial equation solver for linear and quadratic equations
 
-It will always be considered that the input is well formatted, ie. all terms are ofthe format a\*X^b. The powers are well ordered and all present
+It will always be considered that the input is well formatted, ie. all terms are of the format a\*X^b. The powers are well ordered and all present
 
 # Usage
 > python3 comupter.py "5x^2 + 2x +5" <br>
@@ -27,7 +27,7 @@ To run a batch of examples: <br>
 
 # examples
 
-quadratic_example = "5 * X^0 + 4 * X^1 - 9.3 * X^2 = 1 * X^0"
+quadratic_example = "5 * X^0 + 4 * X^1 - 9.3 * X^2 = 1 * X^0" <br>
 linear_example = "5 * X^0 + 4 * X^1 = 4 * X^0"
 
 >"6x -20 = 0" <br>
