@@ -122,7 +122,8 @@ def reduced_form_tostring(coeffecients):
     reduced = ""
 
     for i in range(len(coeffecients) - 1, 0, -1):
-        reduced += f'{coeffecients[i]:g}' + " * X ^ " + str(i) + " + "
+        if (coeffecients[i]):
+            reduced += f'{coeffecients[i]:g}' + " * X ^ " + str(i) + " + "
 
     reduced += f'{coeffecients[0]:g}' + " = 0"
 
