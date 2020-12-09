@@ -86,6 +86,7 @@ def invert_sign(term):
 def remove_pos(term):
     return term.replace("+", "")
 
+
 def split_to_terms(equation):
     terms = re.findall("([+-]?[^-+]+)", equation)
     terms = [remove_pos(term) for term in terms]
@@ -155,10 +156,12 @@ def quadratic(a, b, c):
     discriminant = calc_discriminant(a, b, c)
     if (discriminant > 0):
         print("discriminant is positive")
-        print("solutions are:", quadratic_roots(a, b, c, 1), quadratic_roots(a, b, c, -1))
+        print("solutions are:", quadratic_roots(
+            a, b, c, 1), quadratic_roots(a, b, c, -1))
     elif (discriminant < 0):
         print("discriminant is negative")
-        print("solutions are imaginary:", quadratic_roots(a, b, c, 1), quadratic_roots(a, b, c, -1))
+        print("solutions are imaginary:", quadratic_roots(
+            a, b, c, 1), quadratic_roots(a, b, c, -1))
     else:
         print("discriminant is zero")
         print("solution is:", quadratic_roots(a, b, c, 1))
