@@ -158,7 +158,7 @@ def quadratic(a, b, c):
         print("solutions are:", quadratic_roots(a, b, c, 1), quadratic_roots(a, b, c, -1))
     elif (discriminant < 0):
         print("discriminant is negative")
-        print("solutions are:", quadratic_roots(a, b, c, 1), quadratic_roots(a, b, c, -1))
+        print("solutions are imaginary:", quadratic_roots(a, b, c, 1), quadratic_roots(a, b, c, -1))
     else:
         print("discriminant is zero")
         print("solution is:", quadratic_roots(a, b, c, 1))
